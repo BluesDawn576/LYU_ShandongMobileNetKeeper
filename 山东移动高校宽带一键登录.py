@@ -19,7 +19,7 @@ class LoginManager:
             password = conf.get('config', 'password')
             if user == "" or password == "":
                 win32api.MessageBox(0, "你想拿空气登录吗(\n例：\n[config]\nuser = 11451419198\npassword = 123456", "错误",win32con.MB_ICONERROR)
-                os.system(os.getcwd()+"\\"+fileName)
+                File.OpenFile(fileName)
                 LoginManager.readInfo()
             else:
                 print("登录账号: {}".format(user))
@@ -94,11 +94,11 @@ class LoginManager:
 class File:
     @staticmethod
     def OpenFile(name):
-        os.system("'{}\\{}'".format(os.getcwd(),name))
+        os.system('"{}\\{}"'.format(os.getcwd(),name))
 
 if __name__ == '__main__':
     try:
-        print("NetKeeper山东移动高校宽带一键登录 v1.1.0.3")
+        print("NetKeeper山东移动高校宽带一键登录 v1.1.0.4")
         print("https://github.com/BluesDawn576/LYU_ShandongMobileNetKeeper")
         print("---------------------------")
         LoginManager.readInfo()
