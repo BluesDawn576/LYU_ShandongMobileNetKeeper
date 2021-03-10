@@ -37,27 +37,23 @@ class LoginManager:
                 conf.write(fw)
             print("请在accinfo.ini中填写上网账号(user)与密码(password)，保存并关闭")
             win32api.MessageBox(0, "首次启动需要提供上网账号与密码，请在accinfo.ini中填写上网账号(user)与密码(password)，保存并关闭\n例：\n[config]\nuser = 11451419198\npassword = 123456", "提示",win32con.MB_ICONASTERISK)
-            os.system(os.getcwd()+"\\"+fileName)
+            File.OpenFile(fileName)
             LoginManager.readInfo()
 
     @staticmethod
     def connectWeb(user,password):
         url = "http://1.1.1.1"
-        try:
-            res = requests.get(url,allow_redirects=False)
-            location = res.headers["Location"]
-        except BaseException as err:
-            print("--------错误--------")
-            print(str(err))
-            os.system("pause")
-        else:
-            print("重定向到{}".format(location))
-            LoginManager.login(user,password,location)
+        res = requests.get(url,allow_redirects=False)
+        location = res.headers["Location"]
+        print("重定向到{}".format(location))
+        LoginManager.login(user,password,location)
 
     @staticmethod
     def login(user,password,location):
-        ip = "223.99.141.139:9090" #不能保证全部地区都适用
+        ip = "223.99.141.139:9090" #登录页面固定ip，不能保证全部地区都适用
         url = "http://{}/web/connect".format(ip)
+
+        #伪造请求头与请求体
         data = {
             "web-auth-user": user,
             "web-auth-password": password,
@@ -83,7 +79,7 @@ class LoginManager:
         if res.status_code == 200:
             print("登录成功")
             win32api.MessageBox(0, "登录成功", "提示",win32con.MB_ICONASTERISK)
-            #os.system(os.getcwd()+"\\Update.exe")
+            File.OpenFile("Update.exe") #调用更新程序检查有无更新
         else:
             data = json.loads(res.text)
             err_code = data["error"]
@@ -92,14 +88,22 @@ class LoginManager:
                 print("不在特定的网络环境下")
             else:
                 print("登录失败，请检查账号密码是否正确/是否被其它设备占用")
+            win32api.MessageBox(0, "登录失败，请关闭重试，报错内容请查看控制台", "错误",win32con.MB_ICONERROR)
             os.system("pause")
+
+class File:
+    @staticmethod
+    def OpenFile(name):
+        os.system("'{}\\{}'".format(os.getcwd(),name))
 
 if __name__ == '__main__':
     try:
-        print("NetKeeper山东移动高校宽带一键登录")
-        print("v1.1.0.2")
+        print("NetKeeper山东移动高校宽带一键登录 v1.1.0.3")
+        print("https://github.com/BluesDawn576/LYU_ShandongMobileNetKeeper")
+        print("---------------------------")
         LoginManager.readInfo()
     except BaseException as err:
-        print("--------错误--------")
+        print("--------异常--------")
         print(str(err))
+        win32api.MessageBox(0, "程序异常，报错内容请查看控制台", "异常",win32con.MB_ICONERROR)
         os.system("pause")
