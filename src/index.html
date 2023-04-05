@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- MDUI CSS -->
+    <link rel="stylesheet" href="./assets/css/mdui.min.css" />
+    <script type='text/javascript' src='/eel.js'></script>
+    <title>Lyu_NetKeeper 校园网一键登录 - 登录</title>
+</head>
+
+<body class="mdui-theme-layout-auto mdui-drawer-body-left" onload="init();">
+    <header>
+        <div class="mdui-appbar">
+            <div class="mdui-toolbar mdui-color-theme">
+                <a class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#left-drawer'}">
+                    <i class="mdui-icon material-icons">menu</i>
+                </a>
+                <a href="javascript:;" class="mdui-typo-title">登录</a>
+                <div class="mdui-toolbar-spacer"></div>
+            </div>
+        </div>
+    </header>
+    <div class="mdui-drawer" id="left-drawer">
+        <ul class="mdui-list">
+            <li class="mdui-subheader">通用</li>
+            <a href="index.html">
+                <li class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
+                    <div class="mdui-list-item-content">登录</div>
+                </li>
+            </a>
+        </ul>
+    </div>
+
+    <div class="mdui-container">
+        <div class="mdui-row">
+            <div class="mdui-shadow-5 mdui-col-xs-12 mdui-col-sm-8 mdui-col-offset-sm-2 mdui-p-a-4 mdui-m-y-4">
+                <div class="mdui-typo">
+                    <div class="mdui-typo-headline"><strong>登录</strong></div>
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <i class="mdui-icon material-icons">phone_iphone</i>
+                    <label class="mdui-textfield-label">手机号码</label>
+                    <input class="mdui-textfield-input" type="account" id="acc" />
+                </div>
+                <div class="mdui-textfield mdui-textfield-floating-label">
+                    <i class="mdui-icon material-icons">vpn_key</i>
+                    <label class="mdui-textfield-label">密码</label>
+                    <input class="mdui-textfield-input" type="password" id="pwd" />
+                </div>
+                <div class="mdui-col-xs-12 mdui-m-t-2">
+                    <a class="mdui-btn mdui-btn-dense mdui-ripple mdui-float-left" onclick="about();">这是什么</a>
+                    <a href="http://223.99.141.136:1000/resetPwd.html?uid=1665893032710" target="_blank" class="mdui-btn mdui-btn-dense mdui-ripple mdui-float-right">忘记密码</a>
+                </div>
+                <div class="mdui-col-xs-12 mdui-m-t-2">
+                    <button id="submit" type="submit" class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink-accent mdui-center" onclick="login();">登录</button>
+                </div>
+            </div>
+        </div>
+        <div class="mdui-dialog" id="running">
+            <div class="mdui-dialog-content">
+                <div class="mdui-progress">
+                    <div class="mdui-progress-indeterminate"></div>
+                </div>
+                <br>
+                <div class="mdui-typo">
+                    <div class="console-text">
+                        <div class="mdui-typo-subheading" id="console"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- MDUI JavaScript -->
+        <script src="./assets/js/mdui.min.js"></script>
+        <script src="./assets/js/script.js"></script>
+
+</body>
+
+</html>

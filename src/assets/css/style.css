@@ -1,0 +1,10 @@
+.console-text {
+    overflow: scroll;
+    height: 400px;
+    width: 600px;
+}
+
+.anchor {
+    color: #ff5370 !important;
+    caret-color: #ff5370 !important;
+}
