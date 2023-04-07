@@ -1,5 +1,9 @@
+import sys, io
+
+sys.stdout = io.StringIO()
+sys.stderr = io.StringIO()
+
 import eel
-import sys
 import platform
 import win32api, win32con
 

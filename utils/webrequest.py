@@ -5,7 +5,6 @@ import json
 
 from utils import console
 from utils import page
-from utils import toast
 
 redirect_url = "http://1.1.1.1"
 ip = "223.99.141.139:10088"
@@ -49,7 +48,7 @@ def login(user, password, mac):
         console.log("回应代码: {}".format(res.status_code))
 
         if res.status_code == 200:
-            toast.show("登录成功", "提示")
+            console.alert("登录成功", "提示")
             page.redirect_window()
         else:
             data = json.loads(res.text)

@@ -6,5 +6,6 @@ def show(text, title):
     toaster.show_toast(
         title,
         text,
+        icon_path=None,
         duration=None
     )
